@@ -2,22 +2,23 @@
 
 ## Project structure
 
-This repository contains one AutoHotkey v2 script:
+This repository has one AutoHotkey v2 script and two documentation files:
 
 - `legoafk.ahk` keeps a Fortnite LEGO player active for XP, detects lobby returns, clicks Play, and resumes movement after reloading.
-- There are no separate assets, dependencies, build files, or automated tests.
+- `README.md` covers setup, controls, configuration, and troubleshooting.
+- `AGENTS.md` contains contributor instructions.
 
-Keep user-tunable values near the top of `legoafk.ahk`. Put reusable behavior in named functions such as `CheckLobby()` or `ReleaseKeys()` rather than adding more work directly to a hotkey block. If the project grows, place test scripts under `tests/` and documentation or screenshots under `docs/`.
+There are no dependencies, build files, or automated tests. Keep user-tunable values near the top of `legoafk.ahk`. Put reusable behavior in named functions such as `CheckLobby()` or `ReleaseKeys()` rather than adding work directly to a hotkey block.
 
 ## Running and development commands
 
 Install AutoHotkey v2 before running these commands. AutoHotkey is not bundled with the repository.
 
 ```powershell
-AutoHotkey.exe .\legoafk.ahk
+Start-Process .\legoafk.ahk
 ```
 
-Runs the script locally. Press `F1` to toggle automation and `Esc` to release held inputs and exit.
+Runs the script locally. Press `F1` to toggle automation and `F2` to release held inputs and exit.
 
 ```powershell
 Ahk2Exe.exe /in .\legoafk.ahk /out .\legoafk.exe
@@ -34,15 +35,15 @@ Target AutoHotkey v2 and retain `#Requires AutoHotkey v2.0`. Use four spaces for
 There is no automated test framework or coverage target. Test changes at 4:3, 16:10, 16:9, and 21:9:
 
 1. Start the script and confirm `F1` enables and disables timers.
-2. Verify movement keys, Space, and the mouse button are released when disabling or pressing `Esc`.
+2. Verify movement keys, Space, and the mouse button are released when disabling or pressing `F2`.
 3. At each aspect ratio, return to the Fortnite lobby and confirm movement pauses, Play is clicked, and the AFK loop resumes after the LEGO game reloads.
 
 Keep the AutoHotkey debugger or `/ErrorStdOut` output clear of syntax and runtime errors.
 
 ## Commits and pull requests
 
-This checkout has no Git history to establish a local convention. Use short, imperative commit subjects, for example `Fix lobby click offset`. Keep each commit focused. Pull requests should describe changes, list the tested resolution and AutoHotkey version, and call out modified coordinates, colors, or delays. Include a screenshot for pixel-detection or UI changes.
+The Git history contains only `init`, so it does not establish a convention. Use short, imperative commit subjects, for example `Fix lobby click offset`. Keep each commit focused. Pull requests should describe changes, list the tested resolution and AutoHotkey version, and call out modified coordinates, colors, or delays. Include a screenshot for pixel-detection or UI changes.
 
 ## Safety notes
 
-The script generates keyboard and mouse input. Test with Fortnite focused, keep `Esc` available, and call `ReleaseKeys()` on every new exit or interruption path.
+The script generates keyboard and mouse input. Test with Fortnite focused, keep `F2` available, and call `ReleaseKeys()` on every new exit or interruption path.
